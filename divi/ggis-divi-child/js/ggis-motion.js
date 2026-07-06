@@ -210,6 +210,38 @@
       }
     })
 
+    /* -- Full-bleed band entrance: scales to full canvas as it enters --------
+       (Command Centre section in the mockup.) */
+    each('.ggis-band', function (el) {
+      gsap.fromTo(
+        el,
+        { scale: 0.96, borderTopLeftRadius: '2.5rem', borderTopRightRadius: '2.5rem' },
+        {
+          scale: 1,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+          ease: 'none',
+          scrollTrigger: { trigger: el, start: 'top 90%', end: 'top 35%', scrub: 1 },
+        }
+      )
+    })
+
+    /* -- Idle float (status card): slow drift, paused while offscreen ------- */
+    each('.ggis-float', function (el) {
+      gsap.to(el, {
+        y: -8,
+        duration: 2.6,
+        ease: 'power1.inOut',
+        yoyo: true,
+        repeat: -1,
+        scrollTrigger: {
+          trigger: el,
+          start: 'top bottom',
+          toggleActions: 'play pause resume pause',
+        },
+      })
+    })
+
     /* -- Values marquee: infinite drift, tempo breathes with scroll --------- */
     each('.ggis-marquee', function (wrap) {
       var track = wrap.querySelector('.ggis-marquee-track')

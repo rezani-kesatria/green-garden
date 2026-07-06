@@ -72,6 +72,8 @@ etc. — for Custom CSS fields.)
 | `ggis-reveal` | any module | fade-up on enter (batched, staggered) |
 | `ggis-rule` | divider modules | hairline draws left→right |
 | `ggis-parallax` (+ `data-speed="0.95"`, opt. `data-no-clip`) | Image modules | clip-path unmask + scrubbed drift; speeds 0.92–1.08, alternate per figure |
+| `ggis-band` | Command Centre section | enters at 96% scale with rounded top corners, expands to full bleed |
+| `ggis-float` | the "Command Centre — Live" card | slow idle float, paused offscreen |
 | `ggis-marquee` / `ggis-marquee-track` | values band (Code module) | infinite drift, tempo reacts to scroll velocity |
 | `ggis-process` / `ggis-process-track` / `ggis-process-progress` / `ggis-process-counter` / `ggis-process-numeral` | Process section parts | pinned horizontal scrub ≥1024px, vertical stack below |
 | `ggis-magnetic` | primary CTA buttons | cursor-follow hover (desktop only) |
@@ -171,6 +173,9 @@ IDs on sections make the anchor nav work: `#services`, `#projects`,
 
 - **Turn off Divi's own entrance animations** on anything carrying a
   `ggis-*` motion class — one animation owner per element.
+- **Keep the Process section transform-free**: don't apply Divi scroll
+  effects or transforms to `.ggis-process` or its parents — ScrollTrigger
+  pinning misbehaves inside transformed ancestors.
 - Image modules must output a real `<img>` (default behavior) — don't use
   section *background* images for parallax figures.
 - If a caching/optimization plugin rewrites scripts, exclude the `gsap`,
