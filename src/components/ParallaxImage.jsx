@@ -27,6 +27,11 @@ export default function ParallaxImage({
 }) {
   const wrap = useRef(null)
 
+  // All local (public/) imagery renders through this component, so resolve
+  // root-relative paths against Vite's base URL here — on GitHub Pages the
+  // site lives under /green-garden/, not the domain root.
+  const resolvedSrc = src.startsWith('/') ? import.meta.env.BASE_URL + src.slice(1) : src
+
   useGSAP(
     () => {
       const mm = gsap.matchMedia()
@@ -65,7 +70,7 @@ export default function ParallaxImage({
   return (
     <div ref={wrap} className={`relative h-full w-full overflow-hidden ${className}`}>
       <img
-        src={src}
+        src={resolvedSrc}
         alt={alt}
         loading={eager ? 'eager' : 'lazy'}
         onLoad={queueRefresh}
