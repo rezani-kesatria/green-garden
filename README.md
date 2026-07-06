@@ -36,3 +36,12 @@ npm run deploy       # vite build + wrangler deploy
 
 `not_found_handling = "single-page-application"` serves `index.html` for any
 unknown path, so shared preview links never 404.
+
+GitHub Pages also auto-deploys from `main` (see
+`.github/workflows/deploy.yml`) → https://rezani-kesatria.github.io/green-garden/
+
+## WordPress / Divi 5 port
+
+`divi/` contains the production port kit: `ggis-divi-child` (child theme
+with the GSAP + Lenis motion layer, class-driven) and `BUILD-GUIDE.md`
+(design variables, class API, section-by-section build map).

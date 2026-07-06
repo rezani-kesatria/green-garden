@@ -1,0 +1,120 @@
+/*
+Theme Name:  GGIS Divi Child
+Theme URI:   https://github.com/rezani-kesatria/green-garden
+Description: GreenGarden Integrated Services — Divi 5 child theme carrying the GSAP/Lenis motion system and design tokens from the approved mockup.
+Author:      rezani
+Template:    Divi
+Version:     1.0.0
+*/
+
+/* ---------------------------------------------------------------------------
+   GGIS design tokens as CSS custom properties.
+   Mirror these in Divi's Design Variables (see BUILD-GUIDE.md); the vars are
+   here so Custom CSS fields and code snippets can reference them too.
+--------------------------------------------------------------------------- */
+:root {
+  --ggis-green-50: #f4f7f3;
+  --ggis-green-100: #e4ede2;
+  --ggis-green-200: #c9dbc6;
+  --ggis-green-300: #a3c09f;
+  --ggis-green-400: #7aa077;
+  --ggis-green-500: #587f56;
+  --ggis-green-600: #40653f;
+  --ggis-green-700: #345233;
+  --ggis-green-800: #283f27; /* brand */
+  --ggis-green-900: #1e3320;
+  --ggis-green-950: #122114;
+  --ggis-canvas: #faf7f0;
+  --ggis-canvas-bright: #fdfbf7;
+  --ggis-canvas-tint: #f3eee3;
+  --ggis-ink: #171b16;
+  --ggis-ink-soft: #3d423c;
+  --ggis-ink-mid: #6b7066;
+  --ggis-ink-faint: #9aa095;
+  --ggis-gold: #b99755;
+  --ggis-gold-deep: #8f6f2e;
+  --ggis-gold-soft: #ebdfc2;
+  --ggis-line: #e2dccc;
+  --ggis-line-soft: #ede8da;
+}
+
+::selection {
+  background: var(--ggis-green-800);
+  color: var(--ggis-canvas);
+}
+
+/* --- Eyebrow labels (apply .ggis-eyebrow to Text modules) ----------------- */
+.ggis-eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ggis-ink-mid);
+}
+
+/* --- Parallax figures ------------------------------------------------------
+   Add .ggis-parallax to an Image module (plus data-speed via the guide).
+   The wrapper clips; the img over-scales so the drift never shows edges. */
+.ggis-parallax {
+  overflow: hidden;
+}
+.ggis-parallax img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Values marquee --------------------------------------------------------
+   Markup pattern (Code module) in BUILD-GUIDE.md: a .ggis-marquee wrapper
+   containing .ggis-marquee-track with the content rendered twice. */
+.ggis-marquee {
+  overflow: hidden;
+}
+.ggis-marquee-track {
+  display: flex;
+  width: max-content;
+}
+.ggis-marquee-track > * {
+  flex-shrink: 0;
+}
+.ggis-marquee-run {
+  white-space: nowrap;
+  padding-right: 0.5em;
+}
+
+/* --- Process horizontal track ---------------------------------------------
+   Desktop: one row, JS scrubs it sideways while the section is pinned.
+   Below 1024px the same markup stacks vertically (JS skips the pin). */
+.ggis-process-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .ggis-process-track {
+    flex-direction: row;
+    width: max-content;
+    gap: 2rem;
+  }
+  .ggis-process-track > * {
+    width: 460px;
+    flex-shrink: 0;
+  }
+}
+
+/* --- Footer ghost wordmark ------------------------------------------------ */
+.ggis-ghost {
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 15vw;
+  line-height: 0.78;
+  color: rgba(250, 247, 240, 0.05);
+}
+
+/* --- SplitText line masks (measurement stability) -------------------------- */
+.ggis-split .line,
+.ggis-hero-headline .line {
+  will-change: transform;
+}
